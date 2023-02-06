@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import searchAlbumAPI from './services/searchAlbumsAPI';
 import Header from './components/Header';
 import Loading from './Loading';
