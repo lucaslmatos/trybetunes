@@ -25,7 +25,6 @@ class Album extends React.Component {
       content: contentAPI,
       isLoading: false,
     });
-    console.log(contentAPI);
   };
 
   render() {
@@ -38,14 +37,14 @@ class Album extends React.Component {
           ? <Loading /> : (
             <div data-testid="page-album">
               <h2 data-testid="album-name">
+                <div>
+                  <img src={ content[0]?.artworkUrl100 } alt="Imagem do album" />
+                </div>
                 Album
                 {' '}
-                {content[0].collectionName}
-                <div>
-                  <img src={ content[0].artworkUrl100 } alt="Imagem do album" />
-                </div>
+                {content[0]?.collectionName}
               </h2>
-              <h3 data-testid="artist-name">{ content[0].artistName }</h3>
+              <h3 data-testid="artist-name">{ content[0]?.artistName }</h3>
               <MusicCard list={ songs } />
             </div>)}
       </div>

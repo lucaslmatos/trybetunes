@@ -56,6 +56,9 @@ class Search extends React.Component {
       <div>
         <Header />
         <div data-testid="page-search">
+          <div>
+            <p> Procure por um Artista ou Banda: </p>
+          </div>
           <input
             type="text"
             data-testid="search-artist-input"
