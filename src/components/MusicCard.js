@@ -24,7 +24,7 @@ class MusicCard extends React.Component {
     });
   };
 
-  adicionaFavorita = async ({ target }) => {
+  handleFavorite = async ({ target }) => {
     const { list } = this.props;
     const { favorites } = this.state;
     const currentSong = list.filter((song) => String(song.trackId) === target.id);
@@ -48,8 +48,8 @@ class MusicCard extends React.Component {
     if (isLoading) return <Loading />;
     return (
       <ul>
-        { list.map((song) => (
-          <li key={ song.trackName }>
+        { list.map((song, index) => (
+          <li key={ index }>
             <p>{song.trackName}</p>
             <audio data-testid="audio-component" src={ song.previewUrl } controls>
               <track kind="captions" />
@@ -60,13 +60,13 @@ class MusicCard extends React.Component {
               .
             </audio>
             <label
-              htmlFor="favorite"
-              data-testid={ `checkbox-music-${song.trackId}` }
+              htmlFor="Favorita"
             >
               <input
                 type="checkbox"
-                onChange={ this.adicionaFavorita }
+                onChange={ this.handleFavorite }
                 id={ song.trackId }
+                data-testid={ `checkbox-music-${song.trackId}` }
                 checked={ (favorites.some((songs) => songs.trackId === song.trackId)) }
               />
               Favorita
