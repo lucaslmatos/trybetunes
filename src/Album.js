@@ -30,6 +30,7 @@ class Album extends React.Component {
   render() {
     const { content, isLoading } = this.state;
     const songs = content.slice(1);
+    const fr = false;
     return (
       <div>
         <Header />
@@ -45,7 +46,7 @@ class Album extends React.Component {
                 {content[0]?.collectionName}
               </h2>
               <h3 data-testid="artist-name">{ content[0]?.artistName }</h3>
-              <MusicCard list={ songs } />
+              <MusicCard list={ songs } fav={ fr } />
             </div>)}
       </div>
     );
