@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
-import Loading from './Loading';
 import { getUser } from './services/userAPI';
 
 class Profile extends React.Component {
   state = {
-    isLoading: false,
     user: {},
   };
 
@@ -15,19 +13,14 @@ class Profile extends React.Component {
   }
 
   recuperaInfo = async () => {
-    this.setState({
-      isLoading: false,
-    });
     const user = await getUser();
     this.setState({
-      isLoading: false,
       user,
     });
   };
 
   render() {
-    const { user, isLoading } = this.state;
-    if (isLoading) return <Loading />;
+    const { user } = this.state;
     return (
       <div>
         <Header />
@@ -38,7 +31,7 @@ class Profile extends React.Component {
               alt="Profile"
               data-testid="profile-image"
             />
-            <Link to="/profile/edit">Editar perfil</Link>
+            <Link to="profile/edit">Editar perfil</Link>
           </div>
           <h4>{user.name}</h4>
           <h4>{user.email}</h4>
